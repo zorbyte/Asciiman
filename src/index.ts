@@ -25,7 +25,7 @@ console.log(ASCII_ART);
 log.info(`Starting Asciiman by zorbyte.`);
 
 client.once("ready", async () => {
-  log.info("Logged into Discord [4/4]");
+  log.info("Logged into Discord.");
   const guildAmnt = client.guilds.cache.size;
   log.debug(`Logged in as ${client.user.tag} with ${guildAmnt} guild${guildAmnt === 1 ? "" : "s"}. Using prefix ${client.prefix}.`);
   await client.user.setActivity({
