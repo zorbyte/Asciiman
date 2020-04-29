@@ -1,0 +1,35 @@
+{
+  "name": "asciiman",
+  "version": "0.0.1",
+  "description": "A hangman bot that is better than resolv's",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node .",
+    "start-built": "node ."
+  },
+  "author": "zorbyte",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "fs-nextra": "^0.4.7",
+    "module-alias": "^2.2.2",
+    "ow": "^0.17.0",
+    "signale": "^1.4.0"
+  },
+  "_moduleAliases": {
+    "@root": "./dist",
+    "@utils": "./dist/utils"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.4",
+    "@types/signale": "^1.4.1",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "eslint": "^6.8.0",
+    "eslint-config-alloy": "^3.7.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^5.0.3",
+    "typescript": "^3.8.3"
+  }
+}
