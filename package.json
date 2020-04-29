@@ -1,6 +1,6 @@
 {
   "name": "asciiman",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A hangman bot that is better than resolv's",
   "main": "./dist/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "start-built": "node ."
   },
   "author": "zorbyte",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "dependencies": {
     "discord.js": "^12.2.0",
     "fs-nextra": "^0.4.7",

@@ -2,7 +2,7 @@ import Command from "@root/types/Command";
 import { HANGMAN_STAGES } from "@utils/constants";
 
 import { Message, MessageCollector, NewsChannel } from "discord.js";
-// import log from "signale";
+import log from "signale";
 
 const hangman: Command = {
   aliases: ["hm"],
@@ -13,8 +13,8 @@ const hangman: Command = {
     const randomWordInd = Math.floor(Math.random() * client.allWordsLength);
     const word = client.allWords[randomWordInd];
 
-    // log.debug(`Hangman is being played! The word is ${word}`);
-    const peekedWordAmnt = Math.ceil(word.length * 0.2);
+    log.debug(`Hangman is being played! The word is ${word}.`);
+    const peekedWordAmnt = Math.ceil(word.length * 0.35);
     let placeholder = `${word.slice(0, peekedWordAmnt)}${"_".repeat(word.length - peekedWordAmnt)}`;
 
     const letters = new Set(
@@ -38,9 +38,10 @@ const hangman: Command = {
       time: 30000,
     });
 
-    collector.on("collect", ({ content, author }: Message) => {
-      if (userIds.size !== 1) userIds.delete(author.id);
+    collector.on("collect", ({ content, channel }: Message) => {
+      // if (userIds.size !== 1) userIds.delete(author.id);
       if (content === word) {
+        channel.send(`Winner: <@${msg.author.id}>.`);
         collector.stop("Game won");
         return sentMsg.edit(generateGameStr(word, 1, phase));
       }
@@ -58,7 +59,11 @@ const hangman: Command = {
 
         const gameState = placeholder === word ? 1 : 0;
 
-        if (gameState === 1) collector.stop("Game won");
+        if (gameState === 1) {
+          channel.send(`Winner: <@${msg.author.id}>.`);
+          collector.stop("Game won");
+        }
+
         letters.delete(content);
         return sentMsg.edit(generateGameStr(placeholder, gameState, phase));
       }
@@ -74,7 +79,7 @@ const hangman: Command = {
     });
 
     collector.once("end", (_, reason) => {
-      if (reason === "time") sentMsg.edit(`***Time's up! - ***${generateGameStr(word, -1, phase)}`);
+      if (reason === "time") sentMsg.edit(`***Time's up! -*** ${generateGameStr(word, -1, phase)}`);
     });
   },
 };
