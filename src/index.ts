@@ -6,7 +6,7 @@ import Client from "@utils/Client";
 import { ASCII_ART } from "@utils/constants";
 import { configLoader, lookupCommand } from "@utils/utils";
 
-import { scan } from "fs-nextra";
+import { readFile, scan } from "fs-nextra";
 import ow from "ow";
 import log from "signale";
 
@@ -31,7 +31,7 @@ client.once("ready", async () => {
   await client.user.setActivity({
     name: `hangman - ${client.prefix}help`,
   });
-  
+
   log.success("Successfully bootstrapped AsciiMan.");
 });
 
@@ -105,8 +105,10 @@ async function bootstrap(): Promise<void> {
 
     log.info("Loading all English words into RAM...");
 
-    // @ts-ignore
-    client.allWords = (await import("@utils/allWords")).default;
+    // We don't want simple words or letters of the alphabet.
+    client.allWords = (await readFile(join(__dirname, "..", "static", "commonWords.txt"), {
+      encoding: "utf-8",
+    })).split("\n").filter(w => w.length >= 6);
 
     // Do this now as doing it on a message is a costly operation.
     client.allWordsLength = client.allWords.length;
