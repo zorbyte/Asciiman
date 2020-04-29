@@ -38,10 +38,10 @@ const hangman: Command = {
       time: 30000,
     });
 
-    collector.on("collect", ({ content, channel }: Message) => {
+    collector.on("collect", ({ content, author }: Message) => {
       // if (userIds.size !== 1) userIds.delete(author.id);
       if (content === word) {
-        channel.send(`Winner: <@${msg.author.id}>.`);
+        msg.channel.send(`Winner: <@${author.id}>.`);
         collector.stop("Game won");
         return sentMsg.edit(generateGameStr(word, 1, phase));
       }
@@ -60,7 +60,7 @@ const hangman: Command = {
         const gameState = placeholder === word ? 1 : 0;
 
         if (gameState === 1) {
-          channel.send(`Winner: <@${msg.author.id}>.`);
+          msg.channel.send(`Winner: <@${author.id}>.`);
           collector.stop("Game won");
         }
 
