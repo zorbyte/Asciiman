@@ -1,4 +1,5 @@
 {
   "prefix": "h!",
-  "token": "Shhhh!"
+  "token": "Shhhh!",
+  "minimumWordLength": 4
 }

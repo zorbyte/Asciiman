@@ -79,7 +79,7 @@ const hangman: Command = {
     });
 
     collector.once("end", (_, reason) => {
-      if (reason === "time") sentMsg.edit(`***Time's up! -*** ${generateGameStr(word, -1, phase)}`);
+      if (reason === "time") sentMsg.edit(`***Time's up! -*** ${generateGameStr(word, -1, 7)}`);
     });
   },
 };

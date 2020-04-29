@@ -1,6 +1,6 @@
 {
   "name": "asciiman",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A hangman bot that is better than resolv's",
   "main": "./dist/index.js",
   "scripts": {
