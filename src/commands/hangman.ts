@@ -2,7 +2,7 @@ import Command from "@root/types/Command";
 import { HANGMAN_STAGES } from "@utils/constants";
 
 import { Message, MessageCollector, NewsChannel } from "discord.js";
-import log from "signale";
+// import log from "signale";
 
 const hangman: Command = {
   aliases: ["hm"],
