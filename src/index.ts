@@ -108,7 +108,7 @@ async function bootstrap(): Promise<void> {
     // We don't want simple words or letters of the alphabet.
     client.allWords = (await readFile(join(__dirname, "..", "static", "commonWords.txt"), {
       encoding: "utf-8",
-    })).split("\n").filter(w => w.length >= 6);
+    })).split("\n").filter(w => w.length >= config.minimumWordLength);
 
     // Do this now as doing it on a message is a costly operation.
     client.allWordsLength = client.allWords.length;
