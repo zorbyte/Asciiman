@@ -2,9 +2,9 @@ import "module-alias/register";
 
 import { extname, join, relative } from "path";
 
-import Client from "@utils/Client";
-import { ASCII_ART } from "@utils/constants";
-import { configLoader, lookupCommand } from "@utils/utils";
+import Client from "@lib/Client";
+import { ASCII_ART } from "@lib/constants";
+import { configLoader, lookupCommand } from "@lib/utils";
 
 import { readFile, scan } from "fs-nextra";
 import ow from "ow";

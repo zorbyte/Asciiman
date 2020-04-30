@@ -1,4 +1,4 @@
-import Client from "@utils/Client";
+import Client from "@lib/Client";
 
 import { Message } from "discord.js";
 

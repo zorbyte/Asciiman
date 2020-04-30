@@ -1,5 +1,5 @@
+import { HANGMAN_STAGES, ZORBYTE_ID } from "@lib/constants";
 import Command from "@root/types/Command";
-import { HANGMAN_STAGES, ZORBYTE_ID } from "@utils/constants";
 
 import { Message, MessageCollector, NewsChannel } from "discord.js";
 import log from "signale";

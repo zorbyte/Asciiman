@@ -1,6 +1,6 @@
+import Client from "@lib/Client";
+import { lookupCommand, LookupResult } from "@lib/utils";
 import Command from "@root/types/Command";
-import Client from "@utils/Client";
-import { lookupCommand, LookupResult } from "@utils/utils";
 
 import { EmbedField, MessageEmbed } from "discord.js";
 

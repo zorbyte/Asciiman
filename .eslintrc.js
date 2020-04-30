@@ -23,7 +23,7 @@ module.exports = {
           ],
 
           // Internal packages.
-          ["^(@|@root|@utils)(/.*|$)"],
+          ["^(@|@root|@lib)(/.*|$)"],
 
           // Namespaced packages.
           ["^@?\\w"],

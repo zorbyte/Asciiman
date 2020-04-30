@@ -30,7 +30,7 @@
     "rootDir": "src/",
     "baseUrl": "src/",
     "paths": {
-      "@utils/*": ["utils/*"],
+      "@lib/*": ["lib/*"],
       "@root/*": ["*"]
     }
   },
