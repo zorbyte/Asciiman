@@ -24,13 +24,12 @@ console.log(ASCII_ART);
 
 log.info(`Starting Asciiman by zorbyte.`);
 
-client.once("ready", async () => {
+client.on("ready", async () => {
   log.info("Logged into Discord.");
   const guildAmnt = client.guilds.cache.size;
   log.debug(`Logged in as ${client.user.tag} with ${guildAmnt} guild${guildAmnt === 1 ? "" : "s"}. Using prefix ${client.prefix}.`);
-  await client.user.setActivity({
-    name: `hangman - ${client.prefix}help`,
-  });
+
+  await setStatus();
 
   log.success("Successfully bootstrapped AsciiMan.");
 });
@@ -67,11 +66,21 @@ client.on("message", async msg => {
   }
 });
 
-client.on("shardReconnecting", () => log.debug("Client is reconnecting..."));
+client.on("shardReconnecting", async () => {
+  log.debug("Client is reconnecting...");
+  await setStatus();
+});
+
 client.on("warn", warning => log.error("A warning was issues by the discord.js client!", warning));
 client.on("error", err => log.error("An error occurred within discord.js!", err));
 
 bootstrap();
+
+async function setStatus(): Promise<void> {
+  await client.user.setActivity({
+    name: `hangman - ${client.prefix}help`,
+  });
+}
 
 async function bootstrap(): Promise<void> {
   try {
