@@ -14,7 +14,7 @@ const help: Command = {
       .setColor(0xFFBF00);
       
     if (args.length) {
-      const cmdName = args[0];
+      const cmdName = args[0].toLowerCase();
       const lookupRes = lookupCommand(client, cmdName) as LookupResult;
 
       // Send the default help.
