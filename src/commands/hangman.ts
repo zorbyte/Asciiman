@@ -62,6 +62,7 @@ const hangman: Command = {
     });
 
     collector.on("collect", ({ content, author }: Message) => {
+      content = content.toLowerCase();
       if (content === word) {
         collector.stop(`Game won_${author.id}`);
         return sentMsg.edit(generateGameStr(word, 1, phase));
