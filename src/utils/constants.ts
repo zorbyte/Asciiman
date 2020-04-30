@@ -1,8 +1,12 @@
-import { dedent, NEW_LN_START_END, zip } from "./utils";
+import { dedent, zip } from "./utils";
 
 // In order to remain within the source path, use a require instead.
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const { version } = require("../../package.json");
+
+export const ZORBYTE_ID = "451285730648653834";
+
+export const NEW_LN_START_END = /^\n|\n$/g;
 
 export const HANGMAN_STAGES = [
   `

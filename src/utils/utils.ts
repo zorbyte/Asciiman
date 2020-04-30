@@ -17,8 +17,6 @@ export function zip<T extends any[]>(...rows: T[]): T[][] {
   return [...rows[0]].map((_, c) => rows.map(row => row[c]));
 }
 
-export const NEW_LN_START_END = /^\n|\n$/g;
-
 export function configLoader(): () => BotConfig {
   let cachedConfig: BotConfig;
 
