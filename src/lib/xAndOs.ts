@@ -95,7 +95,7 @@ export function intelligentMove(masterState: GameState, maxPlayer: Player = "O")
         beta = Math.min(currentBest, beta);
       }
 
-      if (alpha > beta) break;
+      if (alpha >= beta) break;
 
       if (mainCall) {
         moveTree[childBest] = childBest in moveTree ?
