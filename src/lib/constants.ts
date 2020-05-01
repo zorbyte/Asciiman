@@ -4,6 +4,8 @@ import { dedent, zip } from "./utils";
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const { version } = require("../../package.json");
 
+export const VERSION = version;
+
 export const ZORBYTE_ID = "451285730648653834";
 
 export const NEW_LN_START_END = /^\n|\n$/g;
@@ -89,7 +91,7 @@ const ASCI_MAN_NAME = `
   / _ \\ / __|/ __| | | |\\/| |/ _\` | '_ \\ 
  / ___ \\ __ \\ (__| | | |  | | (_| | | | |
 /_/   \\_\\___/\\___|_|_|_|  |_|\\__,_|_| |_|
-                              v${version}
+                              v${VERSION}
 `.trimEnd();
 
 export const ASCII_ART = zip(

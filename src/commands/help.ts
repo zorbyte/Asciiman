@@ -1,4 +1,5 @@
 import Client from "@lib/Client";
+import { VERSION } from "@lib/constants";
 import { lookupCommand, LookupResult } from "@lib/utils";
 import Command from "@root/types/Command";
 
@@ -27,7 +28,10 @@ const help: Command = {
       const fields = [...client.commands.entries()].map(([name, cmd]) => buildCmdField(client, name, cmd));
 
       embed
-        .setDescription("Asciiman is written by zorbyte#4500! It can play hangman and unbeatable tic tac toe, that's about it.")
+        .setDescription(
+          `Asciiman v${VERSION} is written by zorbyte#4500. It can play hangman and unbeatable tic tac toe, that's about it.\n` +
+          "Command syntax: `[optional] <required> ... = many`",
+        )
         .addFields(fields);
     }
 
