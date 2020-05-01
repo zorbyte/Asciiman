@@ -17,7 +17,9 @@ const CMD_DIR = join(__dirname, "commands");
 
 const getConfig = configLoader();
 
-const client = new Client();
+const client = new Client({
+  restTimeOffset: 50,
+});
 
 // eslint-disable-next-line no-console
 console.log(ASCII_ART);

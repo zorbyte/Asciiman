@@ -27,7 +27,7 @@ const help: Command = {
       const fields = [...client.commands.entries()].map(([name, cmd]) => buildCmdField(client, name, cmd));
 
       embed
-        .setDescription("Asciiman is written by zorbyte#4500! It can play hangman, that's about it.")
+        .setDescription("Asciiman is written by zorbyte#4500! It can play hangman and unbeatable tic tac toe, that's about it.")
         .addFields(fields);
     }
 

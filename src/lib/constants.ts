@@ -99,3 +99,19 @@ export const ASCII_ART = zip(
   .map(s => s.join("\t     "))
   .join("\n")
   .replace(NEW_LN_START_END, "");
+
+export const WINNING_POSSIBILITIES = [
+  // Horizontal possibilities.
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+
+  // Vertical possibilities.
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+
+  // Diagonal possibilities.
+  [0, 4, 8],
+  [2, 4, 6],
+];
