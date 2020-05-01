@@ -81,7 +81,7 @@ const tictactoe: Command = {
       const [fin, winner] = gameWinners(state);
       const phase = fin && winner ? -1 : fin ? 1 : 0;
       await sentMsg.edit(gameMsg(state, phase, endTime));
-      if (movePos) await delReact(sentMsg, movePos);
+      if (typeof movePos !== "undefined") await delReact(sentMsg, movePos);
       inProgress = false;
       if (fin) collector.stop("Game end");
     });
