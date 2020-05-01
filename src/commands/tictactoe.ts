@@ -62,12 +62,11 @@ const tictactoe: Command = {
       const reactInd = ALLOWED_REACTIONS.findIndex(e => e === react.emoji.name);
 
       // Probably reacted in the middle of AI ply.
-      if (!checkPositionFree(reactInd, state) || inProgress) return;
+      if (!checkPositionFree(state, reactInd) || inProgress) return;
 
       inProgress = true;
 
       state[reactInd] = minPlayer;
-
 
       let endTime: string;
       let movePos: number;
@@ -80,7 +79,7 @@ const tictactoe: Command = {
 
       const [fin, winner] = gameWinners(state);
       const phase = fin && winner ? -1 : fin ? 1 : 0;
-      await sentMsg.edit(gameMsg(state, phase, endTime));
+      if (!fin) await sentMsg.edit(gameMsg(state, phase, endTime));
       if (typeof movePos !== "undefined") await delReact(sentMsg, movePos);
       inProgress = false;
       if (fin) collector.stop("Game end");

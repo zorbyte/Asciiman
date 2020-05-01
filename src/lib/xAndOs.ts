@@ -10,7 +10,7 @@ export function createState(): GameState {
     .map((_, i) => i + 1);
 }
 
-export function checkPositionFree(posInd: number, state: GameState): boolean {
+export function checkPositionFree(state: GameState, posInd: number): boolean {
   return typeof state[posInd] === "number";
 }
 
@@ -27,7 +27,7 @@ export function gameWinners(state: GameState): [boolean, Player | void] {
   if (boardEmpty(state)) return [false, void 0];
 
   for (const path of WINNING_POSSIBILITIES) {
-    const isWinner = checkPathSame(path, state);
+    const isWinner = checkPathSame(state, path);
     if (isWinner) return [true, state[path[2]] as Player];
   }
 
@@ -36,17 +36,6 @@ export function gameWinners(state: GameState): [boolean, Player | void] {
 
 export function boardFull(state: GameState): boolean {
   return state.every(pos => typeof pos === "string");
-}
-
-function boardEmpty(state: GameState): boolean {
-  return state.every(pos => typeof pos === "number");
-}
-
-function checkPathSame(path: number[], state: GameState): boolean {
-  // Checks a path of the provided coordinates.
-  return state[path[0]] === state[path[1]] &&
-    state[path[0]] === state[path[2]] &&
-    typeof state[path[0]] === "string";
 }
 
 export function availableMoves(state: GameState): number[] {
@@ -58,7 +47,7 @@ export function intelligentMove(masterState: GameState, maxPlayer: Player = "O")
   const minPlayer = maxPlayer === "O" ? "X" : "O";
   const moveTree: Record<number, string> = {};
 
-  const bestDepth = miniMax(masterState.slice());
+  const bestDepth = miniMax(masterState);
 
   let bestMove = moveTree[bestDepth];
   if (bestMove.includes(",")) {
@@ -106,4 +95,15 @@ export function intelligentMove(masterState: GameState, maxPlayer: Player = "O")
 
     return currentBest;
   }
+}
+
+function boardEmpty(state: GameState): boolean {
+  return state.every(pos => typeof pos === "number");
+}
+
+function checkPathSame(state: GameState, path: number[]): boolean {
+  // Checks a path of the provided coordinates.
+  return state[path[0]] === state[path[1]] &&
+    state[path[0]] === state[path[2]] &&
+    typeof state[path[0]] === "string";
 }
