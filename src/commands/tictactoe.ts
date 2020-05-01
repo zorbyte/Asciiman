@@ -88,7 +88,7 @@ const tictactoe: Command = {
 
     collector.on("end", async (_, reason) => {
       if (reason === "time") await sentMsg.edit(gameMsg(state, 2));
-      else availableMoves(state).forEach(id => delReact(sentMsg, id));
+      availableMoves(state).forEach(id => delReact(sentMsg, id));
       client.currentGames.delete(msg.channel.id);
     });
   },
