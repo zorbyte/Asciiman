@@ -66,11 +66,7 @@ client.on("message", async msg => {
   }
 });
 
-client.on("shardReconnecting", async () => {
-  log.debug("Client is reconnecting...");
-  await setStatus();
-});
-
+client.on("shardReconnecting", async () => log.debug("Client is reconnecting..."));
 client.on("warn", warning => log.error("A warning was issues by the discord.js client!", warning));
 client.on("error", err => log.error("An error occurred within discord.js!", err));
 

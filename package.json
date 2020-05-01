@@ -1,6 +1,6 @@
 {
   "name": "asciiman",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "A hangman and tic tac toe bot that is better than resolv's",
   "main": "./dist/index.js",
   "scripts": {

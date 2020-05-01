@@ -172,6 +172,7 @@ module.exports = {
     "no-useless-catch": "off",
     "no-prototype-builtins": "off",
     "@typescript-eslint/no-parameter-properties": "off",
-    "@typescript-eslint/explicit-function-return-type": ["error", { allowExpressions: true }]
+    "@typescript-eslint/explicit-function-return-type": ["error", { allowExpressions: true }],
+    "no-async-promise-executor": "off"
   },
 };

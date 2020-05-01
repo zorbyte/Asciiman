@@ -115,3 +115,15 @@ export const WINNING_POSSIBILITIES = [
   [0, 4, 8],
   [2, 4, 6],
 ];
+
+export const ALLOWED_REACTIONS = [
+  "1⃣",
+  "2⃣",
+  "3⃣",
+  "4⃣",
+  "5⃣",
+  "6⃣",
+  "7⃣",
+  "8⃣",
+  "9⃣",
+];
