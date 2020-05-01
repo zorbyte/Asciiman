@@ -41,11 +41,12 @@ client.on("message", async msg => {
     // This is cached, so there is no lost performance here.
     const { prefix } = getConfig();
 
-    const { content, author } = msg;
+    let { content, author } = msg;
+    content = content.toLowerCase();
+
     if (author.bot || !content.startsWith(prefix)) return;
 
     const [cmdName, ...args] = content
-      .toLowerCase()
       .slice(prefix.length)
       .trim()
       .split(/ +/g);
