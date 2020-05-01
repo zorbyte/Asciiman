@@ -95,7 +95,7 @@ const tictactoe: Command = {
 };
 
 async function delReact(msg: Message, reactInd: number): Promise<void> {
-  await msg.reactions.cache.find(r => r.emoji.name === ALLOWED_REACTIONS[reactInd]).remove();
+  await msg.reactions.cache.find(r => r.emoji.name === ALLOWED_REACTIONS[reactInd] && r.me).remove();
 }
 
 function gameMsg(state: GameState, phase: -1 | 0 | 1 | 2, time?: string): string {
