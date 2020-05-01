@@ -96,9 +96,13 @@ const tictactoe: Command = {
         for (const emoji of ALLOWED_REACTIONS) if (!consumed.includes(emoji)) await sentMsg.react(emoji);
 
         collector.on("end", async (_, reason) => {
-          if (reason === "time") await sentMsg.edit(gameMsg(state, 2));
-          availableMoves(state).forEach(id => delReact(sentMsg, id));
-          client.currentGames.delete(msg.channel.id);
+          try {
+            if (reason === "time") await sentMsg.edit(gameMsg(state, 2));
+            availableMoves(state).forEach(id => delReact(sentMsg, id));
+            client.currentGames.delete(msg.channel.id);
+          } catch (err) {
+            reject(err);
+          }
         });
       } catch (err) {
         reject(err);
